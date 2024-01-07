@@ -1,14 +1,14 @@
 const express = require('express')
 let app  = express()
 const PORT = 5000
+const expressConfig = require('./config/expressConfig.js')
+const handlebarsConfig = require('./config/handlebarConfig.js')
+
+expressConfig(app)
+handlebarsConfig(app)
+
 
 //add HandleBars 
-const handlebars = require('express-handlebars')
-app.engine('hbs',handlebars.engine({
-    extname: 'hbs'
-}))
-app.set('view engine','hbs')
-
 
 //setup ssc and static files
 app.use(express.static('static'))
