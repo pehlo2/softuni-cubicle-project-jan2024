@@ -9,6 +9,10 @@ app.engine('hbs',handlebars.engine({
 }))
 app.set('view engine','hbs')
 
+
+//setup ssc and static files
+app.use(express.static('static'))
+
 //routes
 app.get('/', (req,res)=>{
 
