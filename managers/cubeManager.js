@@ -19,6 +19,7 @@ function getAllCubes(){
 
 function getOne(cubeId){
     let cube = cubes.find(x=>x.id === cubeId)
+
     return cube
 }
 
