@@ -27,8 +27,8 @@ async function createCube(cubeData) {
     return cube
 }
 
-function getAllCubes(search, from, to) {
-    let result = Cube.find()
+async function getAllCubes(search, from, to) {
+    let result = await Cube.find().lean()
 
     if (search) {
         result = result.filter(cubes => cubes.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
