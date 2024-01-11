@@ -1,5 +1,5 @@
 const uniqid = require('uniqid')
-
+const Cube = require('../models/Cube')
 let cubes = [
     {
         id:"1412raraw4f523523525afaw",
@@ -19,17 +19,16 @@ let cubes = [
 
 
 
-function createCube(cubeData) {
-    const newCube = {
-        id: uniqid(),
-        ...cubeData,
-    }
-    cubes.push(newCube)
-    return newCube
+async function createCube(cubeData) {
+   const cube = new Cube(cubeData)
+   await cube.save()
+    //let cube = await Cube.create(cubeData)
+   
+    return cube
 }
 
 function getAllCubes(search, from, to) {
-    let result = cubes.slice()
+    let result = Cube.find()
 
     if (search) {
         result = result.filter(cubes => cubes.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
@@ -45,8 +44,9 @@ function getAllCubes(search, from, to) {
 }
 
 function getOne(cubeId) {
-    let cube = cubes.find(x => x.id === cubeId)
-    return cube
+   let cube = Cube.findById(cubeId)
+   return cube
+    
 }
 
 module.exports = {

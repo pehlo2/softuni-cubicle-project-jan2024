@@ -1,15 +1,12 @@
-let mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-let cubSchema = new mongoose.Schema({
+const cubSchema = new mongoose.Schema({
     name: String,
-imageUrl: String,
-description: String,
-difficultyLevel: Number,
-  
-
-
+    description: String,
+    imageUrl: String,
+    difficultyLevel: Number,
 
 })
 
-let newCub = mongoose.model('Cub',cubSchema)
-module.exports(newCub)
+const Cube = mongoose.model('Cube', cubSchema)
+module.exports = Cube
