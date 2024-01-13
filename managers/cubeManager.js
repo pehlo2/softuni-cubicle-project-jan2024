@@ -44,13 +44,27 @@ async function getAllCubes(search, from, to) {
 }
 
 function getOne(cubeId) {
-   let cube = Cube.findById(cubeId)
+   let cube = Cube.findById(cubeId)  //popualte da smetnq ot masive s ObjectiD - NA OBIKNOVEN MASIV OT
    return cube
     
+}
+function   getOneWithAccesories(cubeId) {
+    return this.getOne(cubeId).populate('accessories')
+     
+ }
+
+async function attachAccessory(cubeId , accesoryId){
+   // return Cube.findByIdAndUpdate(cubeId,{$push: {accessories :accesoryId}})
+   let cube = await Cube.findById(cubeId)
+   cube.accessories.push(accesoryId);
+   return cube.save()
+
+   
 }
 
 module.exports = {
     createCube,
     getAllCubes,
-    getOne
+    getOne,attachAccessory,
+    getOneWithAccesories
 }

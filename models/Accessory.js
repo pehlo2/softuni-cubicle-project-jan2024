@@ -1,15 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-let accessorySchema = mongoose.Schema({
-       name: String,
-       ImageUrl:String,
-       description: String,
-      
+const accessorySchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    imageUrl : String,
+});
 
-})
-
-let Accessory = mongoose.model('accessory',accessorySchema)
+const Accessory = mongoose.model('Accessory', accessorySchema);
 
 module.exports = Accessory;
-
-

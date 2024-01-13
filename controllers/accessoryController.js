@@ -3,7 +3,6 @@ const accessoryManager = require('../managers/accessoryManager.js')
 let router = express.Router()
 
 router.get('/create',(req,res)=>{
-
  res.render('accessory/create')
 
 })
