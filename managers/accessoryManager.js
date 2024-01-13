@@ -1,7 +1,7 @@
 const Accessory = require('../models/Accessory.js')
 
 
-async function createAccessory(data){
+function createAccessory(data){
     const accessory = Accessory.create(data)
   // await accessory.save()
     //let cube = await Cube.create(cubeData)
@@ -9,5 +9,9 @@ async function createAccessory(data){
     return accessory
 
 }
+function getAllAccessories(){
+  const accessories = Accessory.find()
+  return accessories
+}
 
-module.exports = {createAccessory}
+module.exports = {createAccessory ,getAllAccessories}

@@ -2,6 +2,7 @@
 const { log } = require('console')
 const express = require('express')
 const cubeManager = require('../managers/cubeManager.js')
+const accessoryManager = require('../managers/accessoryManager.js')
 
 
 let router = express.Router()
@@ -36,5 +37,17 @@ router.get('/details/:cubeId', async (req, res) => {
     res.render('details', { cube });
 
 })
+
+router.get('/details/:cubeId/accessory-attach',async (req,res)=>{
+    let id = req.params.cubeId
+    let cube = await cubeManager.getOne(id).lean();
+    let accessories = await  accessoryManager.getAllAccessories().lean()
+    console.log(accessories);
+
+
+
+    res.render('accessory/attach',{cube ,accessories})
+   
+   })
 
 module.exports = router
