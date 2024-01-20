@@ -48,7 +48,7 @@ function getOne(cubeId) {
    return cube
     
 }
-function   getOneWithAccesories(cubeId) {
+function getOneWithAccesories(cubeId) {
     return this.getOne(cubeId).populate('accessories')
      
  }

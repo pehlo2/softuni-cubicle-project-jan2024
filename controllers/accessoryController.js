@@ -11,6 +11,7 @@ router.post('/create', async (req, res)=>{
   
     console.log(req.body);
     const { name, description, imageUrl} =req.body
+  
     await accessoryManager.createAccessory({ name, description, imageUrl})
     ///TOODO ADD ACCESORY TO DATAbase
     res.redirect('/')
