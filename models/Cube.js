@@ -8,7 +8,11 @@ const cubSchema = new mongoose.Schema({
     accessories:[{
         type: mongoose.Types.ObjectId,
         ref: 'Accessory' /// imeto na refenciqta na modela
-    }]
+    }],
+    owner:{
+        type: mongoose.Types.ObjectId,
+        ref:'User'
+    }
 
 })
 

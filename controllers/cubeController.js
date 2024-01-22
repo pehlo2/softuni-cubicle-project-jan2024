@@ -8,8 +8,7 @@ const accessoryManager = require('../managers/accessoryManager.js')
 let router = express.Router()
 //cube go zadavam v index ako reqquesta zapochva s /cube da polzva tozi routes
 router.get('/create', (req, res) => {
-   
-    res.render('create');
+    res.render('cube/create');
 
 })
 router.post('/create', async (req, res) => {
@@ -21,7 +20,8 @@ router.post('/create', async (req, res) => {
         description,
         imageUrl,
         difficultyLevel:
-            Number(difficultyLevel)
+            Number(difficultyLevel),
+        owner: req.user._id
     });
     res.redirect('/');
 
@@ -34,7 +34,7 @@ router.get('/details/:cubeId', async (req, res) => {
         return res.redirect("/404")
     }
 
-    res.render('details', { cube });
+    res.render('cube/details', { cube });
 
 })
 
@@ -55,6 +55,10 @@ router.get('/details/:cubeId/accessory-attach',async (req,res)=>{
 
    res.redirect(`/cubes/details/${cubeId}/accessory-attach`)
 
+   })
+   router.get('/details/:cubeId/delete', async (req,res)=>{
+    let cube = await cubeManager.getOne(req.params.cubeId).lean()
+    res.render('cube/delete',{cube})
    })
 
 
