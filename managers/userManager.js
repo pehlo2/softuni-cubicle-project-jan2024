@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('../lib/jwt.js')
 //const cookieParser = require('cookie-parser')
 
-let SECRET = 'pehlo'
+const {SECRET} = require('../config/config.js')
 
 function register(userData) {
    return User.create(userData)

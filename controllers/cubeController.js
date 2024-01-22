@@ -8,7 +8,7 @@ const accessoryManager = require('../managers/accessoryManager.js')
 let router = express.Router()
 //cube go zadavam v index ako reqquesta zapochva s /cube da polzva tozi routes
 router.get('/create', (req, res) => {
-    console.log(cubeManager.getAllCubes());
+   
     res.render('create');
 
 })
@@ -55,7 +55,6 @@ router.get('/details/:cubeId/accessory-attach',async (req,res)=>{
 
    res.redirect(`/cubes/details/${cubeId}/accessory-attach`)
 
-   
    })
 
 
